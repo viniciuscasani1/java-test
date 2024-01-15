@@ -1,0 +1,301 @@
+{
+	"info": {
+		"_postman_id": "e9872129-b3a2-4755-87df-6ca059d8882e",
+		"name": "Test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "102112"
+	},
+	"item": [
+		{
+			"name": "Logar Admin",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"user-root\",\r\n    \"password\": \"senha_hash\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logar User normal",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"novo-nome\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registrar Novo usuário",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzA1MzQ2MDIzLCJleHAiOjE3MDU0MDY1MDN9.9IYFllOYeqONlou1-wMWQ1uI-0GWuMhkAvv0DInHb-0qHx6dFGGicuDFuOp1PiWBmPyuvjIKi6Pjr9P7TDYExA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"cpf\": \"123456789\",\r\n  \"dataNascimento\": \"2024-01-15T19:14:21.765Z\",\r\n  \"endereco\": {\r\n    \"bairro\": \"Centro\",\r\n    \"cep\": \"12345-000\",\r\n    \"cidade\": \"São Paulo\",\r\n    \"complemento\": \"Predio verde\",\r\n    \"estado\": \"São Paulo\",\r\n    \"numero\": \"1214\",\r\n    \"rua\": \"Rua sem saida\"\r\n  },\r\n  \"nome\": \"Novo Nome\",\r\n  \"password\": \"123456\",\r\n  \"username\": \"novo-nome\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/usuarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar usuário",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzA1MzQ2MDIzLCJleHAiOjE3MDU0MDY1MDN9.9IYFllOYeqONlou1-wMWQ1uI-0GWuMhkAvv0DInHb-0qHx6dFGGicuDFuOp1PiWBmPyuvjIKi6Pjr9P7TDYExA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 10,\r\n    \"cpf\": \"123456789\",\r\n    \"nome\": \"Novo Nome Editado\",\r\n    \"dataNascimento\": \"2024-01-15T19:14:21.765Z\",\r\n    \"username\": \"novo-nome\",\r\n    \"endereco\": {\r\n        \"id\": 9,\r\n        \"rua\": \"Rua sem saida\",\r\n        \"numero\": \"1214\",\r\n        \"complemento\": \"Predio verde\",\r\n        \"bairro\": \"Centro\",\r\n        \"cidade\": \"São Paulo\",\r\n        \"estado\": \"São Paulo\",\r\n        \"cep\": \"12345-000\"\r\n    },\r\n    \"status\": \"ATIVO\",\r\n    \"usuarioCriacao\": {\r\n        \"id\": 1,\r\n        \"cpf\": \"123.456.789-01\",\r\n        \"nome\": \"Nome do Usuário\",\r\n        \"username\": \"user-root\",\r\n        \"endereco\": null,\r\n        \"status\": \"REMOVIDO\",\r\n        \"dataCriacao\": null,\r\n        \"usuarioCriacao\": null,\r\n        \"dataAtualizacao\": null,\r\n        \"usuarioAtualizacao\": null,\r\n        \"dataRemocao\": null,\r\n        \"usuarioRemocao\": null\r\n    },\r\n    \"dataAtualizacao\": null,\r\n    \"usuarioAtualizacao\": null,\r\n    \"dataRemocao\": null,\r\n    \"usuarioRemocao\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/usuarios/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuarios",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete usuário",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzA1MzQ2MDIzLCJleHAiOjE3MDU0MDY1MDN9.9IYFllOYeqONlou1-wMWQ1uI-0GWuMhkAvv0DInHb-0qHx6dFGGicuDFuOp1PiWBmPyuvjIKi6Pjr9P7TDYExA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 10,\r\n    \"cpf\": \"123456789\",\r\n    \"nome\": \"Novo Nome Editado\",\r\n    \"dataNascimento\": \"2024-01-15T19:14:21.765Z\",\r\n    \"username\": \"novo-nome\",\r\n    \"endereco\": {\r\n        \"id\": 9,\r\n        \"rua\": \"Rua sem saida\",\r\n        \"numero\": \"1214\",\r\n        \"complemento\": \"Predio verde\",\r\n        \"bairro\": \"Centro\",\r\n        \"cidade\": \"São Paulo\",\r\n        \"estado\": \"São Paulo\",\r\n        \"cep\": \"12345-000\"\r\n    },\r\n    \"status\": \"ATIVO\",\r\n    \"usuarioCriacao\": {\r\n        \"id\": 1,\r\n        \"cpf\": \"123.456.789-01\",\r\n        \"nome\": \"Nome do Usuário\",\r\n        \"username\": \"user-root\",\r\n        \"endereco\": null,\r\n        \"status\": \"REMOVIDO\",\r\n        \"dataCriacao\": null,\r\n        \"usuarioCriacao\": null,\r\n        \"dataAtualizacao\": null,\r\n        \"usuarioAtualizacao\": null,\r\n        \"dataRemocao\": null,\r\n        \"usuarioRemocao\": null\r\n    },\r\n    \"dataAtualizacao\": null,\r\n    \"usuarioAtualizacao\": null,\r\n    \"dataRemocao\": null,\r\n    \"usuarioRemocao\": null\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/usuarios/10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuarios",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzA1MzQ2MDIzLCJleHAiOjE3MDU0MDY1MDN9.9IYFllOYeqONlou1-wMWQ1uI-0GWuMhkAvv0DInHb-0qHx6dFGGicuDFuOp1PiWBmPyuvjIKi6Pjr9P7TDYExA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/usuarios",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get By CPF",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNzA1MzQ2MDIzLCJleHAiOjE3MDU0MDY1MDN9.9IYFllOYeqONlou1-wMWQ1uI-0GWuMhkAvv0DInHb-0qHx6dFGGicuDFuOp1PiWBmPyuvjIKi6Pjr9P7TDYExA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/usuarios/123456789",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"usuarios",
+						"123456789"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
