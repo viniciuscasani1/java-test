@@ -19,7 +19,9 @@ Projeto de desafio teste
 * ### Backend
     * Acessar a classe ```DemoApplication.java``` e executar a mesma
     * A documentação swagger pode ser acessada em http://localhost:8080/swagger-ui.html#/
+    * Já existe um usuário ADMIN criado, o mesmo deve ser usado para criar os demais users
+      * username: user-root
+      * password: senha_hash
     * As collections pra teste se encontram na pasta resources, que fica na raiz do projeto
-
 
 
